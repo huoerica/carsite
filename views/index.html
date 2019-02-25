@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <script type="text/javascript" src="http://vuejs.org/js/vue.min.js"></script>
+    <script src="https://unpkg.com/element-ui/lib/index.js"></script>
+    <script type="text/javascript" src="../static/js/components.js"></script>
+</head>
+<body>
+<div id="app">
+    <header-navbar :navid="'1'"></header-navbar>
+    <!--<header class="page-header">
+        <el-row class="container">
+            <el-row class="header-logo">
+                <a href="index.html"><img src="http://www.shxunri.com/template/default/images/logo.png" /></a>
+            </el-row>
+            <el-menu class="el-menu-demo" mode="horizontal" background-color="#27292E" text-color="#e4e4e4"
+                     active-text-color="#de0000"
+                     :default-active="activeIndex">
+                <template v-for="menu in menus">
+                    <template v-if="menu.children">
+                        <el-submenu :index="menu.index">
+                            <template slot="title">
+                                <a :href="menu.url">{{menu.name}}</a>
+                            </template>
+                            <template v-for="child in menu.children">
+                                <template v-if="child.children">
+                                    <el-submenu :index="child.index">
+                                        <template slot="title">
+                                            <a :href="child.url">{{child.name}}</a>
+                                        </template>
+                                        <el-menu-item v-for="cchild in child.children"
+                                                      :index="cchild.index">
+                                            <a :href="cchild.url">{{cchild.name}}</a>
+                                        </el-menu-item>
+                                    </el-submenu>
+                                </template>
+                                <template v-else>
+                                    <el-menu-item :index="child.index">
+                                        <a :href="child.url">{{child.name}}</a>
+                                    </el-menu-item>
+                                </template>
+                            </template>
+                        </el-submenu>
+                    </template>
+                    <template v-else>
+                        <el-menu-item :index="menu.index">
+                            <a :href="menu.url">{{menu.name}}</a>
+                        </el-menu-item>
+                    </template>
+                </template>
+            </el-menu>
+        </el-row>
+    </header>-->
+    <el-row class="page-body">
+        <el-row class="index-banner">
+            <el-carousel :interval="3000" height="400px" :autoplay="auto">
+                <el-carousel-item v-for="item in banners" :key="item">
+                    <a :href="item.url"><img :src="item.image" /></a>
+                </el-carousel-item>
+            </el-carousel>
+            <el-row class="banner-search" type="flex">
+                <el-col :span="20">
+                    <el-input v-model="search" placeholder="请输入关键词"></el-input>
+                </el-col>
+                <el-button type="danger" icon="el-icon-search">搜索</el-button>
+            </el-row>
+        </el-row>
+    </el-row>
+</div>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            auto: false,
+            search: '',
+            banners: [
+                {image: 'http://pic1.win4000.com/wallpaper/2018-12-14/5c131c586397a.jpg', url: '', name: ''},
+                {image: 'http://pic1.win4000.com/wallpaper/2018-12-14/5c131c5b9f6a4.jpg', url: '', name: ''},
+                {image: 'http://pic1.win4000.com/wallpaper/2018-12-14/5c131c5734a1f.jpg', url: '', name: ''}
+            ]
+        },
+        methods: {
+            handleSelect(key, keyPath) {
+                console.log(key, keyPath);
+            }
+        }
+    })
+</script>
+</body>
+</html>
